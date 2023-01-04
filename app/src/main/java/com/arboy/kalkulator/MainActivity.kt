@@ -36,11 +36,8 @@ class MainActivity : AppCompatActivity() {
 
 
     fun onEqualClick(view: View) {
-
-        onEqual()
+        OnEqual()
         binding.dataTv.text = binding.resultTv.text.toString().drop(1)
-
-
     }
 
 
@@ -53,11 +50,11 @@ class MainActivity : AppCompatActivity() {
 
     } else {
 
-        binding.dataTv.append((view as Button) .text)
+        binding.dataTv.append((view as Button).text)
 
         }
         lastNumeric = true
-        onEqual()
+        OnEqual()
     }
 
 
@@ -68,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             binding.dataTv.append((view as Button).text)
             lastDot = false
             lastNumeric = false
-            onEqual()
+            OnEqual()
 
         }
 
@@ -90,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
 
             if (lastChar.isDigit())
-                onEqual()
+                OnEqual()
 
 
         }catch (e : Exception) {
@@ -115,7 +112,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun onEqual() {
+    fun OnEqual() {
 
         if(lastNumeric && !stateError){
             val txt = binding.dataTv.toString()
