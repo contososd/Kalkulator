@@ -107,6 +107,9 @@ class MainActivity : AppCompatActivity() {
     fun onClearClick(view: View) {
 
 
+        binding.dataTv.text = ""
+        lastNumeric = false
+
 
 
 
