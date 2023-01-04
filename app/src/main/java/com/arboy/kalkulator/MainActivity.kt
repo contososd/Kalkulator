@@ -2,9 +2,11 @@ package com.arboy.kalkulator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.arboy.kalkulator.databinding.ActivityMainBinding
 import net.objecthunter.exp4j.Expression
+import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +29,15 @@ class MainActivity : AppCompatActivity() {
     fun onEqualClick(view: View) {}
 
 
-    fun onDigitClick(view: View) {}
+    fun onDigitClick(view: View) {
+
+
+
+
+
+
+
+    }
 
 
     fun onOperatorClick(view: View) {}
@@ -36,4 +46,29 @@ class MainActivity : AppCompatActivity() {
     fun onBackClick(view: View) {}
 
     fun onClearClick(view: View) {}
+
+    fun OnEqual() {
+
+        if(lastNumeric && !stateError){
+            val txt = binding.dataTv.toString()
+
+            expression = ExpressionBuilder(txt). build()
+
+            try{
+
+                val result = expression.evaluate()
+
+                binding.resultTv.visibility = View.VISIBLE
+
+                binding.resultTv.text = "=" + result.toString()
+
+            }catch (ex : java.lang.ArithmeticException){
+
+                Log.e("evaluate error", ex. toString())
+                binding.resultTv.text = "Error"
+                stateError = true
+                lastNumeric = false
+            }
+        }
+    }
 }
